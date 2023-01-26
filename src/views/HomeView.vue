@@ -1,9 +1,12 @@
+<template>
+  <div>
+    <h1>Tous les produits</h1>
+    <AllProducts />
+  </div>
+</template>
+
 <script setup>
-import TheWelcome from '../components/TheWelcome.vue'
+import AllProducts from "../components/AllProducts.vue";
 </script>
 
-<template>
-  <main>
-    <TheWelcome />
-  </main>
-</template>
+<style lang="scss" scoped></style>
