@@ -1,9 +1,12 @@
 <template>
   <div>
-    <h1>HomeView</h1>
+    <h1>Tous les produits</h1>
+    <AllProducts />
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+import AllProducts from "../components/AllProducts.vue";
+</script>
 
 <style lang="scss" scoped></style>

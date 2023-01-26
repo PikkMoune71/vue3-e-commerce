@@ -1,6 +1,9 @@
 <template>
   <nav class="nav">
-    <RouterLink class="nav-item" :to="{ name: 'home' }">Home</RouterLink>
+    <img src="../assets/logo.svg" class="logo" />
+    <RouterLink class="nav-item" :to="{ name: 'home' }"
+      >Tous les produits</RouterLink
+    >
   </nav>
 </template>
 
@@ -25,6 +28,12 @@
       font-weight: bold;
       color: yellow;
     }
+  }
+
+  .logo {
+    width: 40px;
+    height: 40px;
+    margin: 0 20px;
   }
 }
 </style>
