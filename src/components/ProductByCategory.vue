@@ -19,7 +19,6 @@
         {{ item.text }}
       </option>
     </select>
-
     <div v-if="isLoading" class="loader">
       <Loader />
     </div>
@@ -33,14 +32,21 @@
 </template>
 
 <script setup>
-import { ref, watch, watchEffect } from "vue";
-import Loader from "@/components/Loader.vue";
+import { ref, watchEffect } from "vue";
 import ProductCard from "./ProductCard.vue";
+import Loader from "./Loader.vue";
+
+const props = defineProps({
+  category: {
+    type: Object,
+    required: true,
+  },
+});
 
 const products = ref([]);
-const searchProduct = ref("");
 const isLoading = ref(false);
-const sortType = ref("noteDESC");
+const searchProduct = ref("");
+const sortType = ref("");
 const sortOptions = ref([
   { text: "Trier par ordre ASC", value: "ordreASC" },
   { text: "Trier par ordre DESC", value: "ordreDESC" },
@@ -48,15 +54,16 @@ const sortOptions = ref([
   { text: "Trier par note DESC", value: "noteDESC" },
 ]);
 
-const getAllProducts = () => {
+const getProductByCategory = async () => {
   try {
     isLoading.value = true;
-    sortBy();
-    fetch("https://fakestoreapi.com/products")
-      .then((res) => res.json())
-      .then((json) => ((products.value = json), (isLoading.value = false)));
-  } catch (err) {
-    console.log(err);
+    const response = await fetch(
+      `https://fakestoreapi.com/products/category/${props.category.tag}`
+    );
+    products.value = await response.json();
+    isLoading.value = false;
+  } catch (error) {
+    console.log(error);
   }
 };
 
@@ -110,8 +117,8 @@ const sortBy = (sortType) => {
   }
 };
 
-watchEffect(async () => {
-  await getAllProducts();
+watchEffect(() => {
+  getProductByCategory();
 });
 </script>
 
@@ -142,71 +149,5 @@ watchEffect(async () => {
   display: flex;
   justify-content: center;
   margin: 50px auto;
-}
-.card-product {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  background-color: rgb(255, 255, 255);
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
-  border-radius: 15px;
-  color: black;
-  padding: 15px;
-  margin: 10px;
-
-  .img-product {
-    display: flex;
-
-    img {
-      width: 200px;
-      height: auto;
-      background-size: cover;
-    }
-  }
-  .description-product {
-    position: relative;
-    text-align: left;
-    margin-left: 30px;
-    h2 {
-      width: 300px;
-    }
-    span {
-      color: grey;
-    }
-    .content-price {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 50px;
-      .price {
-        font-weight: bold;
-        font-size: 20px;
-      }
-
-      .rate-up {
-        color: green;
-        font-weight: bold;
-      }
-      .rate-down {
-        color: red;
-        font-weight: bold;
-      }
-
-      .notes {
-        font-size: 10px;
-        color: grey;
-      }
-    }
-    .btn-product {
-      a:first-child {
-        margin-right: 10px;
-      }
-    }
-  }
-}
-
-.product-error {
-  span {
-    color: grey;
-  }
 }
 </style>
