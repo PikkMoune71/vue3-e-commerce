@@ -22,14 +22,22 @@
         </div>
       </div>
       <div class="btn-product">
-        <a href="#" class="btn-primary">Détails</a>
-        <a href="#" class="btn-success">Ajouter</a>
+        <RouterLink
+          class="btn-primary"
+          :to="{ name: 'product', params: { id: product.id } }"
+          >Détails</RouterLink
+        >
+        <a href="#" class="btn-success card"
+          ><IconShopping class="icon-shopping" /> Ajouter au panier</a
+        >
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
+import IconShopping from "@/components/icons/IconShopping.vue";
+
 const props = defineProps({
   product: {
     type: Object,
@@ -64,6 +72,7 @@ const props = defineProps({
     text-align: left;
     margin-left: 30px;
     h2 {
+      font-weight: bold;
       width: 300px;
     }
     span {
@@ -97,6 +106,17 @@ const props = defineProps({
       justify-content: center;
       a:first-child {
         margin-right: 10px;
+      }
+
+      .card {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .icon-shopping {
+          width: 25px;
+          height: 25px;
+          margin: 0 10px;
+        }
       }
     }
   }
