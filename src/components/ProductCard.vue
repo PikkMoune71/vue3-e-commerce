@@ -1,0 +1,104 @@
+<template>
+  <div class="card-product">
+    <div class="img-product">
+      <img :src="product.image" :alt="product.title" />
+    </div>
+    <div class="description-product">
+      <h2>{{ product.title }}</h2>
+      <p>
+        <span>Catégorie : {{ product.category }}</span>
+      </p>
+      <div class="content-price">
+        <p class="price">{{ product.price }} €</p>
+        <div class="rate">
+          <p v-if="product.rating.rate > 2.5" class="rate-up">
+            {{ product.rating.rate }} / 5
+            <span class="notes">({{ product.rating.count }} votes)</span>
+          </p>
+          <p v-else class="rate-down">
+            {{ product.rating.rate }} / 5
+            <span class="notes">({{ product.rating.count }}) votes</span>
+          </p>
+        </div>
+      </div>
+      <div class="btn-product">
+        <a href="#" class="btn-primary">Détails</a>
+        <a href="#" class="btn-success">Ajouter</a>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script setup>
+const props = defineProps({
+  product: {
+    type: Object,
+    required: true,
+  },
+});
+</script>
+
+<style lang="scss" scoped>
+.card-product {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
+  color: black;
+  padding: 15px;
+  margin: 10px;
+
+  .img-product {
+    display: flex;
+
+    img {
+      width: 200px;
+      height: auto;
+      background-size: cover;
+    }
+  }
+  .description-product {
+    position: relative;
+    text-align: left;
+    margin-left: 30px;
+    h2 {
+      width: 300px;
+    }
+    span {
+      color: grey;
+    }
+    .content-price {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 50px;
+      .price {
+        font-weight: bold;
+        font-size: 20px;
+      }
+
+      .rate-up {
+        color: green;
+        font-weight: bold;
+      }
+      .rate-down {
+        color: red;
+        font-weight: bold;
+      }
+
+      .notes {
+        font-size: 10px;
+        color: grey;
+      }
+    }
+    .btn-product {
+      display: flex;
+      justify-content: center;
+      a:first-child {
+        margin-right: 10px;
+      }
+    }
+  }
+}
+</style>

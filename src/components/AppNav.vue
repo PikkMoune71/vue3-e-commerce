@@ -4,6 +4,9 @@
     <RouterLink class="nav-item" :to="{ name: 'home' }"
       >Tous les produits</RouterLink
     >
+    <RouterLink class="nav-item" :to="{ name: 'categories' }"
+      >Catégories</RouterLink
+    >
   </nav>
 </template>
 
@@ -26,7 +29,7 @@
     padding: 0.5rem 1rem;
     &.is-active {
       font-weight: bold;
-      color: yellow;
+      color: #42b883;
     }
   }
 

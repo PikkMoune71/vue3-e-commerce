@@ -24,34 +24,7 @@
       <Loader />
     </div>
     <div v-for="product in filteredList()" :key="product.id">
-      <div class="card-product">
-        <div class="img-product">
-          <img :src="product.image" :alt="product.title" />
-        </div>
-        <div class="description-product">
-          <h2>{{ product.title }}</h2>
-          <p>
-            <span>Catégorie : {{ product.category }}</span>
-          </p>
-          <div class="content-price">
-            <p class="price">{{ product.price }} €</p>
-            <div class="rate">
-              <p v-if="product.rating.rate > 2.5" class="rate-up">
-                {{ product.rating.rate }} / 5
-                <span class="notes">({{ product.rating.count }} votes)</span>
-              </p>
-              <p v-else class="rate-down">
-                {{ product.rating.rate }} / 5
-                <span class="notes">({{ product.rating.count }}) votes</span>
-              </p>
-            </div>
-          </div>
-          <div class="btn-product">
-            <a href="#" class="btn-primary">Détails</a>
-            <a href="#" class="btn-success">Ajouter</a>
-          </div>
-        </div>
-      </div>
+      <ProductCard :product="product" />
     </div>
     <div class="product-error" v-if="searchProduct && !filteredList().length">
       <span>Aucun produit n'a été trouvé.. Vérifier votre recherche</span>
@@ -62,6 +35,8 @@
 <script setup>
 import { ref, watch, watchEffect } from "vue";
 import Loader from "@/components/Loader.vue";
+import ProductCard from "./ProductCard.vue";
+
 const products = ref([]);
 const searchProduct = ref("");
 const isLoading = ref(false);
