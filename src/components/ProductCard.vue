@@ -22,7 +22,11 @@
         </div>
       </div>
       <div class="btn-product">
-        <a href="#" class="btn-primary">Détails</a>
+        <RouterLink
+          class="btn-primary"
+          :to="{ name: 'product', params: { id: product.id } }"
+          >Détails</RouterLink
+        >
         <a href="#" class="btn-success">Ajouter</a>
       </div>
     </div>
@@ -64,6 +68,7 @@ const props = defineProps({
     text-align: left;
     margin-left: 30px;
     h2 {
+      font-weight: bold;
       width: 300px;
     }
     span {
