@@ -127,11 +127,12 @@ watchEffect(async () => {
       display: flex;
       justify-content: center;
       align-items: center;
-    }
-    .icon-shopping {
-      width: 25px;
-      height: 25px;
-      margin: 0 10px;
+      font-weight: 700;
+      .icon-shopping {
+        width: 25px;
+        height: 25px;
+        margin: 0 10px;
+      }
     }
   }
 }
