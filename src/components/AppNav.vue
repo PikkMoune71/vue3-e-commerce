@@ -1,6 +1,9 @@
 <template>
   <nav class="nav">
-    <img src="../assets/logo.svg" class="logo" />
+    <RouterLink class="" :to="{ name: 'home' }"
+      ><img src="../assets/logo.svg" class="logo"
+    /></RouterLink>
+
     <RouterLink class="nav-item" :to="{ name: 'home' }"
       >Tous les produits</RouterLink
     >
@@ -11,7 +14,7 @@
       <RouterLink class="nav-cart" :to="{ name: 'cart' }">
         <IconShopping class="icon-cart" />
       </RouterLink>
-      <span class="counter-product">{{ totalQuantity }}</span>
+      <span class="counter-product">{{ totalQuantity }} </span>
     </div>
   </nav>
 </template>
@@ -63,15 +66,22 @@ const { totalQuantity } = storeToRefs(cartStore);
 
     .nav-cart {
       padding: 0 0.2rem;
-    }
-    .icon-cart {
-      width: 25px;
-      height: 25px;
-      color: white;
-      &:hover {
+      color: #fff;
+      &.is-active {
+        font-weight: bold;
         color: #42b883;
       }
     }
+
+    .icon-cart {
+      width: 25px;
+      height: 25px;
+      fill: #fff;
+    }
+  }
+  .counter-product {
+    margin-top: -5px;
+    font-weight: bold;
   }
 }
 </style>

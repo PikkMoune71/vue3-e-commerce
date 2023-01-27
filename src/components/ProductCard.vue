@@ -60,7 +60,7 @@ const { addToCart } = cartStore;
   border-radius: 15px;
   color: black;
   padding: 15px;
-  margin: 10px;
+  margin-top: 10px;
 
   .img-product {
     display: flex;

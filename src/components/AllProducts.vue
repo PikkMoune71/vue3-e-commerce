@@ -130,6 +130,7 @@ watchEffect(async () => {
   border: 1px solid #ccc;
   border-radius: 5px;
   margin-bottom: 20px;
+  margin-left: 5px;
 
   &:focus {
     outline-color: black;
@@ -152,7 +153,7 @@ watchEffect(async () => {
   border-radius: 15px;
   color: black;
   padding: 15px;
-  margin: 10px;
+  margin: 10px 0;
 
   .img-product {
     display: flex;
