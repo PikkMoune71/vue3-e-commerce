@@ -16,9 +16,10 @@ import AppNav from "./components/AppNav.vue";
 <style lang="scss" scoped>
 .layout {
   display: flex;
+  justify-content: center;
   flex-direction: column;
   &-body {
-    padding: 2rem;
+    padding: 0.5rem;
     margin: 3rem auto 0;
   }
 }

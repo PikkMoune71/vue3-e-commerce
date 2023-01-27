@@ -18,7 +18,9 @@
             <p>{{ product.price }} €</p>
           </div>
           <div class="info quantity">
-            <button @click="removeFromCart(product)">-</button>
+            <button @click="removeFromCart(product)" class="btn-quantity">
+              -
+            </button>
             <input
               type="number"
               id="quantity"
@@ -27,8 +29,11 @@
               placeholder="Quantité"
               :value="product.quantity"
               :v-model="product.quantity"
+              class="input-quantity"
             />
-            <button @click="addFromCart(product)">+</button>
+            <button @click="addFromCart(product)" class="btn-quantity">
+              +
+            </button>
           </div>
           <div class="info delete">
             <button @click="removeProductFromCart(product)" class="btn-delete">
@@ -39,6 +44,7 @@
       </div>
     </div>
     <div v-if="cart.length > 0" class="total">
+      <hr />
       <p>
         Total : <span>{{ total }} €</span>
       </p>
@@ -67,6 +73,7 @@ const { cart, total } = storeToRefs(cartStore);
 .container-cart {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
   align-items: center;
   border: 1px solid #ccc;
   border-radius: 15px;
@@ -90,7 +97,21 @@ const { cart, total } = storeToRefs(cartStore);
     &.quantity {
       display: flex;
       align-items: center;
-      input {
+      .btn-quantity {
+        width: 30px;
+        height: 30px;
+        margin: 5px;
+        border-radius: 3px;
+        border: 1px solid #ccc;
+        background: none;
+        cursor: pointer;
+      }
+
+      .input-quantity {
+        width: 30px;
+        height: 30px;
+        border-radius: 3px;
+        border: 1px solid #ccc;
         width: 50px;
         text-align: center;
       }
@@ -117,7 +138,12 @@ const { cart, total } = storeToRefs(cartStore);
   font-size: 1.5rem;
   font-weight: bold;
 
+  hr {
+    opacity: 0.3;
+  }
+
   p {
+    margin-top: 10px;
     span {
       font-weight: bold;
     }
@@ -127,6 +153,7 @@ const { cart, total } = storeToRefs(cartStore);
     width: 100%;
     font-size: 20px;
     font-weight: bold;
+    margin-top: 10px;
   }
 }
 </style>
