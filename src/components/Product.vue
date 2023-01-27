@@ -4,7 +4,7 @@
       <Loader />
     </div>
     <div v-else>
-      <h1>Fiche Produit de l'article n°{{ $route.params.id }}</h1>
+      <h1 class="title">Fiche Produit de l'article n°{{ $route.params.id }}</h1>
       <div class="container-product">
         <div class="img-container">
           <img :src="product.image" alt="product" />
@@ -67,6 +67,9 @@ watchEffect(async () => {
 </script>
 
 <style lang="scss" scoped>
+.title {
+  margin-top: 20px;
+}
 .loader {
   width: 3rem;
   height: 3rem;
@@ -81,7 +84,7 @@ watchEffect(async () => {
   justify-content: center;
   flex-wrap: wrap;
   align-items: center;
-  margin: 50px;
+  margin: 50px 0;
 
   .img-container {
     width: 30%;
@@ -98,8 +101,9 @@ watchEffect(async () => {
   }
   .container-description {
     margin-left: 10%;
+    width: 300px;
     h2 {
-      width: 400px;
+      width: 300px;
       font-weight: bold;
       font-size: 30px;
     }
@@ -112,7 +116,8 @@ watchEffect(async () => {
     }
     .description {
       margin-top: 30px;
-      width: 400px;
+      width: 300px;
+      text-align: justify;
     }
     .price {
       font-weight: bold;
