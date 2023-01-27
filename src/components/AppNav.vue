@@ -7,10 +7,23 @@
     <RouterLink class="nav-item" :to="{ name: 'categories' }"
       >Catégories</RouterLink
     >
+    <div class="container-cart">
+      <RouterLink class="nav-cart" :to="{ name: 'cart' }">
+        <IconShopping class="icon-cart" />
+      </RouterLink>
+      <span class="counter-product">{{ totalQuantity }}</span>
+    </div>
   </nav>
 </template>
 
-<script setup></script>
+<script setup>
+import { storeToRefs } from "pinia";
+import IconShopping from "./icons/IconShopping.vue";
+import { useCartStore } from "../stores/cart.js";
+
+const cartStore = useCartStore();
+const { totalQuantity } = storeToRefs(cartStore);
+</script>
 
 <style lang="scss" scoped>
 .nav {
@@ -37,6 +50,28 @@
     width: 40px;
     height: 40px;
     margin: 0 20px;
+  }
+
+  .container-cart {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin-right: 50px;
+    padding: 0;
+
+    .nav-cart {
+      padding: 0 0.2rem;
+    }
+    .icon-cart {
+      width: 25px;
+      height: 25px;
+      color: white;
+      &:hover {
+        color: #42b883;
+      }
+    }
   }
 }
 </style>

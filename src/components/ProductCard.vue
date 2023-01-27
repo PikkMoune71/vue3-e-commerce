@@ -27,9 +27,9 @@
           :to="{ name: 'product', params: { id: product.id } }"
           >Détails</RouterLink
         >
-        <a href="#" class="btn-success card"
-          ><IconShopping class="icon-shopping" /> Ajouter au panier</a
-        >
+        <button @click="addToCart(product)" class="btn-success card">
+          <IconShopping class="icon-shopping" /> Ajouter au panier
+        </button>
       </div>
     </div>
   </div>
@@ -37,6 +37,7 @@
 
 <script setup>
 import IconShopping from "@/components/icons/IconShopping.vue";
+import { useCartStore } from "../stores/cart.js";
 
 const props = defineProps({
   product: {
@@ -44,6 +45,9 @@ const props = defineProps({
     required: true,
   },
 });
+
+const cartStore = useCartStore();
+const { addToCart } = cartStore;
 </script>
 
 <style lang="scss" scoped>
