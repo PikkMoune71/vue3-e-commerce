@@ -4,7 +4,7 @@ Membre : Picard Antoine
 
 # Description du projet
 
-Projet réalisé pendant l'élective VueJS à Ynov. Ce projet à pour but de réaliser une application e-commerce. Pour réaliser ce projet, plusieurs directives devait être respectés :
+Projet réalisé pendant l'élective VueJS à Ynov. Ce projet a pour but de réaliser une application e-commerce. Pour réaliser ce projet, plusieurs directives devaient être respectées :
 - Vous devez créer obligatoirement un projet Vite en utilisant VueRouter et Pinia (aucune autre librairie JS n'est autorisée)
 - Vous pouvez utiliser les données d'une API publique (ex: https://fakestoreapi.com) ou vos propres données
 - Le site doit être responsive (adapté au mobile et au desktop)
