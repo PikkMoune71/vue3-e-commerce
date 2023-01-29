@@ -46,7 +46,7 @@ const props = defineProps({
 const products = ref([]);
 const isLoading = ref(false);
 const searchProduct = ref("");
-const sortType = ref("noteDESC");
+const sortType = ref("");
 const sortOptions = ref([
   { text: "Trier par ordre ASC", value: "ordreASC" },
   { text: "Trier par ordre DESC", value: "ordreDESC" },
@@ -119,10 +119,6 @@ const sortBy = (sortType) => {
 
 watchEffect(async () => {
   await getProductByCategory();
-});
-
-watchEffect(() => {
-  sortListRateReverse();
 });
 </script>
 
