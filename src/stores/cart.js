@@ -11,6 +11,11 @@ export const useCartStore = defineStore("cart", () => {
     }, 0);
   });
 
+  // mettre le total à deux chiffres après la virgule
+  const totalFixed = computed(() => {
+    return total.value.toFixed(2);
+  });
+
   //total produits en fonction de la quantité
   const totalQuantity = computed(() => {
     return cart.value.reduce((total, product) => {
@@ -100,6 +105,7 @@ export const useCartStore = defineStore("cart", () => {
   return {
     cart,
     total,
+    totalFixed,
     totalQuantity,
     addToCart,
     addFromCart,

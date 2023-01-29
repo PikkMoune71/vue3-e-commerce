@@ -113,6 +113,11 @@ const sortBy = (sortType) => {
 watchEffect(async () => {
   await getAllProducts();
 });
+
+// filtrer par défaut les produits par note décroissante
+watchEffect(() => {
+  sortListRateReverse();
+});
 </script>
 
 <style lang="scss" scoped>
