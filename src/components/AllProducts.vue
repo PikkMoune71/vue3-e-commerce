@@ -40,7 +40,7 @@ import ProductCard from "./ProductCard.vue";
 const products = ref([]);
 const searchProduct = ref("");
 const isLoading = ref(false);
-const sortType = ref("noteDESC");
+const sortType = ref("");
 const sortOptions = ref([
   { text: "Trier par ordre ASC", value: "ordreASC" },
   { text: "Trier par ordre DESC", value: "ordreDESC" },
@@ -112,11 +112,6 @@ const sortBy = (sortType) => {
 
 watchEffect(async () => {
   await getAllProducts();
-});
-
-// filtrer par défaut les produits par note décroissante
-watchEffect(() => {
-  sortListRateReverse();
 });
 </script>
 
