@@ -28,7 +28,6 @@
               min="0"
               placeholder="Quantité"
               :value="product.quantity"
-              :v-model="product.quantity"
               class="input-quantity"
             />
             <button @click="addFromCart(product)" class="btn-quantity">
@@ -46,7 +45,7 @@
     <div v-if="cart.length > 0" class="total">
       <hr />
       <p>
-        Total : <span>{{ total }} €</span>
+        Total : <span>{{ totalFixed }} €</span>
       </p>
       <button class="btn-success cart" @click="clearCart">Payer</button>
     </div>
@@ -61,7 +60,7 @@ import IconDelete from "@/components/icons/IconDelete.vue";
 const cartStore = useCartStore();
 const { addFromCart, removeFromCart, removeProductFromCart, clearCart } =
   cartStore;
-const { cart, total } = storeToRefs(cartStore);
+const { cart, totalFixed } = storeToRefs(cartStore);
 </script>
 
 <style lang="scss" scoped>
